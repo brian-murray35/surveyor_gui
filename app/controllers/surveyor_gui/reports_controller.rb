@@ -7,7 +7,9 @@ class SurveyorGui::ReportsController < ApplicationController
   # ReportPreviewWrapper wraps preview in a database transaction so test data is not permanently saved.
   around_action :wrap_in_transaction, only: :preview
   layout 'surveyor_gui/surveyor_gui_default'
-
+def index
+    @surveys = Survey.all
+  end
   def preview
     response_qty = 5 
     user_ids = response_qty.times.map{|i| -1*i}
