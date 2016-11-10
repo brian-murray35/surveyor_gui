@@ -8,7 +8,7 @@ class SurveyorGui::ReportsController < ApplicationController
   around_action :wrap_in_transaction, only: :preview
   layout 'surveyor_gui/surveyor_gui_default'
 def index
-    @surveys = Survey.all
+    @reports = Report.all
   end
   def preview
     response_qty = 5 
