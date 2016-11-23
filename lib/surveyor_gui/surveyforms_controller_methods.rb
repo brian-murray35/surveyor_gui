@@ -48,7 +48,7 @@ module SurveyorGui
         flash[:notice] = "Successfully created survey."
         @title = "Edit Survey"
         @question_no = 0
-        redirect_to "plays/index"
+	      redirect_to edit_surveyform_path(@surveyform.id)
       else
         render :action => 'new'
       end
@@ -59,7 +59,7 @@ module SurveyorGui
       @surveyform = Surveyform.includes(:survey_sections).find(params[:surveyform][:id])
       if @surveyform.update_attributes(surveyforms_params)
         flash[:notice] = "Successfully updated surveyform."
-        redirect_to :action=>:index
+        redirect_to "plays/index"
       else
         flash[:error] = "Changes not saved."
         @question_no = 0
